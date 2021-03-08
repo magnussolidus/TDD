@@ -1,6 +1,7 @@
 package financeiro;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
@@ -12,6 +13,7 @@ import org.junit.Test;
 public class ProcessaPagamento {
 	
 	public List<Boleto> entrada;
+	public List<Pagamento> pagamentos;
 	public Fatura fatura_atual;
 
 	public static void main(String[] args) {
@@ -32,8 +34,8 @@ public class ProcessaPagamento {
 		// Fim do Caso de Teste 1
 	}
 	
-	/*
-	 * Cenário onde o valor total dos boletos é igual ao valor da Fatura
+	/* 
+	 * Cenário onde o somatório dos boletos é igual ao valor da Fatura
 	 */
 	@Test
 	void somatorioBoletosEquivaleFatura(List<Boleto> lista_boletos, Fatura fatura)
@@ -48,6 +50,23 @@ public class ProcessaPagamento {
 			soma_total += boleto.valor_pago;
 		}
 		assertEquals(fatura.valor_total, soma_total);
+	}
+	
+	/*
+	 * Cenário onde o somatório dos boletos é superior ao valor da Fatura
+	 */
+	@Test
+	void somatorioBoletosMaiorQueFatura(List<Boleto> lista_boletos, Fatura fatura)
+	{
+		assertNotNull(lista_boletos);
+		assertNotNull(fatura);
+		assertNotNull(fatura.valor_total);
+		float soma_total = 0.0f;
+		for (Boleto boleto: lista_boletos) {
+			assertNotNull(boleto.valor_pago);
+			soma_total += boleto.valor_pago;
+		}
+		assertTrue(soma_total > fatura.valor_total);
 	}
 
 }
