@@ -50,6 +50,19 @@ public class ProcessaPagamento {
 				new Boleto(5, "00006", Date.valueOf(LocalDate.now()), 250.0f)
 				);
 		// Fim do Caso de Teste 2
+		
+		// Caso de Teste 3
+		Fatura fatura_caso3 = new Fatura();
+		List<Boleto> boletos_caso3 = new ArrayList<Boleto>();
+		
+		fatura_caso3.valor_total = 2000.0f;
+		boletos_caso3.add(
+				new Boleto(6, "00007", Date.valueOf(LocalDate.now()), 500.0f)
+				);
+		boletos_caso3.add(
+				new Boleto(7, "00008", Date.valueOf(LocalDate.now()), 400.0f)
+				);
+		// Fim do Caso de Teste 3
 	}
 	
 	/* 
