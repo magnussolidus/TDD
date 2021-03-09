@@ -84,14 +84,21 @@ public class ProcessaPagamento {
 		assertNotNull(fatura);
 		assertNotNull(fatura.valor_total);
 		
+		Pagamento atual;
 		float soma_total = 0.0f;
+		
 		for (Boleto boleto : lista_boletos) {
 			assertNotNull(boleto.valor_pago);
+			assertTrue(boleto.valor_pago > 0);
+			
 			soma_total += boleto.valor_pago;
-			pagamentos.add(new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now())));
+			atual = new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now()));
+			
+			assertTrue(pagamentos.contains(atual));
 		}
 		assertEquals(fatura.valor_total, soma_total);
 		faturas_pagas.add(fatura);
+		assertTrue(faturas_pagas.contains(fatura));
 		
 	}
 	
@@ -104,14 +111,25 @@ public class ProcessaPagamento {
 		assertNotNull(lista_boletos);
 		assertNotNull(fatura);
 		assertNotNull(fatura.valor_total);
+		
+		Pagamento atual;
 		float soma_total = 0.0f;
+		
 		for (Boleto boleto: lista_boletos) {
 			assertNotNull(boleto.valor_pago);
+			assertTrue(boleto.valor_pago > 0);
+			
 			soma_total += boleto.valor_pago;
-			pagamentos.add(new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now())));
+			atual = new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now()));
+			
+			assertTrue(pagamentos.contains(atual));
 		}
+		
+		assertTrue(pagamentos.size() == lista_boletos.size());
 		assertTrue(soma_total > fatura.valor_total);
+		
 		faturas_pagas.add(fatura);
+		assertTrue(faturas_pagas.contains(fatura));
 	}
 	
 	/*
@@ -123,14 +141,25 @@ public class ProcessaPagamento {
 		assertNotNull(lista_boletos);
 		assertNotNull(fatura);
 		assertNotNull(fatura.valor_total);
+		
+		Pagamento atual;
 		float soma_total = 0.0f;
+		
 		for (Boleto boleto: lista_boletos) {
 			assertNotNull(boleto.valor_pago);
+			assertTrue(boleto.valor_pago > 0);
+			
 			soma_total += boleto.valor_pago;
-			pagamentos.add(new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now())));
+			atual = new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now()));
+			
+			assertTrue(pagamentos.contains(atual));
 		}
+		
+		assertTrue(pagamentos.size() == lista_boletos.size());
 		assertTrue(soma_total < fatura.valor_total);
+		
 		faturas_pendentes.add(fatura);
+		assertTrue(faturas_pagas.contains(fatura));
 	}
 
 }
