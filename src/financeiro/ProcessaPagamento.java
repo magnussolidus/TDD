@@ -14,6 +14,8 @@ public class ProcessaPagamento {
 	
 	public List<Boleto> entrada;
 	public List<Pagamento> pagamentos;
+	public List<Fatura> faturas_pagas;
+	public List<Fatura> faturas_pendentes;
 	public Fatura fatura_atual;
 
 	public static void main(String[] args) {
@@ -32,6 +34,22 @@ public class ProcessaPagamento {
 				new Boleto(2, "00003", Date.valueOf(LocalDate.now()), 600.0f)
 				);
 		// Fim do Caso de Teste 1
+		
+		// Caso de Teste 2
+		Fatura fatura_caso2 = new Fatura();
+		List<Boleto> boletos_caso2 = new ArrayList<Boleto>();
+		
+		fatura_caso2.valor_total = 1500.0f;
+		boletos_caso2.add(
+				new Boleto(3, "00004", Date.valueOf(LocalDate.now()), 1000.0f)
+				);
+		boletos_caso2.add(
+				new Boleto(4, "00005", Date.valueOf(LocalDate.now()), 500.0f)
+				);
+		boletos_caso2.add(
+				new Boleto(5, "00006", Date.valueOf(LocalDate.now()), 250.0f)
+				);
+		// Fim do Caso de Teste 2
 	}
 	
 	/* 
