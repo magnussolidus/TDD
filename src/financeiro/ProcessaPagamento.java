@@ -79,8 +79,11 @@ public class ProcessaPagamento {
 		for (Boleto boleto : lista_boletos) {
 			assertNotNull(boleto.valor_pago);
 			soma_total += boleto.valor_pago;
+			pagamentos.add(new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now())));
 		}
 		assertEquals(fatura.valor_total, soma_total);
+		faturas_pagas.add(fatura);
+		
 	}
 	
 	/*
@@ -96,8 +99,10 @@ public class ProcessaPagamento {
 		for (Boleto boleto: lista_boletos) {
 			assertNotNull(boleto.valor_pago);
 			soma_total += boleto.valor_pago;
+			pagamentos.add(new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now())));
 		}
 		assertTrue(soma_total > fatura.valor_total);
+		faturas_pagas.add(fatura);
 	}
 	
 	/*
@@ -113,8 +118,10 @@ public class ProcessaPagamento {
 		for (Boleto boleto: lista_boletos) {
 			assertNotNull(boleto.valor_pago);
 			soma_total += boleto.valor_pago;
+			pagamentos.add(new Pagamento(boleto.valor_pago, Date.valueOf(LocalDate.now())));
 		}
 		assertTrue(soma_total < fatura.valor_total);
+		faturas_pendentes.add(fatura);
 	}
 
 }
