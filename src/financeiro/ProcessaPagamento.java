@@ -86,5 +86,22 @@ public class ProcessaPagamento {
 		}
 		assertTrue(soma_total > fatura.valor_total);
 	}
+	
+	/*
+	 * Cenário onde o somatório dos boletos é inferior ao valor da fatura
+	 */
+	@Test
+	void somatorioBoletoMenorQueFatura(List<Boleto> lista_boletos, Fatura fatura)
+	{
+		assertNotNull(lista_boletos);
+		assertNotNull(fatura);
+		assertNotNull(fatura.valor_total);
+		float soma_total = 0.0f;
+		for (Boleto boleto: lista_boletos) {
+			assertNotNull(boleto.valor_pago);
+			soma_total += boleto.valor_pago;
+		}
+		assertTrue(soma_total < fatura.valor_total);
+	}
 
 }
