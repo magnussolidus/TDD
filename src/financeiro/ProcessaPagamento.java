@@ -12,14 +12,20 @@ import org.junit.Test;
 
 public class ProcessaPagamento {
 	
-	public List<Boleto> entrada;
 	public List<Pagamento> pagamentos;
 	public List<Fatura> faturas_pagas;
 	public List<Fatura> faturas_pendentes;
-	public Fatura fatura_atual;
 
 	public static void main(String[] args) {
-		// Caso de Teste 1 - Valor Fatura = Somatório dos Boletos
+		
+		Caso1();
+		Caso2();
+		Caso3();
+	}
+	
+	// Caso de Teste 1 - Valor Fatura = Somatório dos Boletos
+	public static void Caso1()
+	{
 		Fatura fatura_caso1 = new Fatura();
 		List<Boleto> boletos_caso1 = new ArrayList<Boleto>();
 		
@@ -33,9 +39,11 @@ public class ProcessaPagamento {
 		boletos_caso1.add(
 				new Boleto(2, "00003", Date.valueOf(LocalDate.now()), 600.0f)
 				);
-		// Fim do Caso de Teste 1
-		
-		// Caso de Teste 2
+	}
+	
+	// Caso de Teste 2 - Valor Fatura < Somatório dos Boletos
+	public static void Caso2()
+	{
 		Fatura fatura_caso2 = new Fatura();
 		List<Boleto> boletos_caso2 = new ArrayList<Boleto>();
 		
@@ -49,9 +57,11 @@ public class ProcessaPagamento {
 		boletos_caso2.add(
 				new Boleto(5, "00006", Date.valueOf(LocalDate.now()), 250.0f)
 				);
-		// Fim do Caso de Teste 2
-		
-		// Caso de Teste 3
+	}
+	
+	// Caso de Teste 3 - Valor Fatura > Somatório dos Boletos
+	public static void Caso3()
+	{
 		Fatura fatura_caso3 = new Fatura();
 		List<Boleto> boletos_caso3 = new ArrayList<Boleto>();
 		
@@ -62,7 +72,6 @@ public class ProcessaPagamento {
 		boletos_caso3.add(
 				new Boleto(7, "00008", Date.valueOf(LocalDate.now()), 400.0f)
 				);
-		// Fim do Caso de Teste 3
 	}
 	
 	/* 
